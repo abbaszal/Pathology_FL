@@ -40,7 +40,7 @@ pip install torch torchvision flwr datasets huggingface_hub
 ### 1️⃣ Download & Prepare Data
 
 ```bash
-python download_fixed.py
+python download_.py
 ```
 
 ---
