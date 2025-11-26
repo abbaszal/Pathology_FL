@@ -28,9 +28,9 @@ To overcome the storage and memory constraints of gigapixel images, this project
 
 ---
 
-## 🚀 How to Run
+##  How to Run
 
-### 📦 Install Dependencies
+### Install Dependencies
 ```bash
 pip install torch torchvision flwr datasets huggingface_hub
 ````
