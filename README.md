@@ -28,6 +28,47 @@ To overcome the storage and memory constraints of gigapixel images, this project
 
 ---
 
+
+```mermaid
+graph TD
+
+    HF[Hugging Face Hub: owkin/camelyon16-features]
+    DL_Script[download_.py]
+    LocalDisk["./real_data - Phikon Embeddings"]
+
+    Server[server.py - Aggregator]
+
+    subgraph Hospital_0
+        Client0[client.py 0]
+        Loader0[Data Loader: 771 to 768 dim]
+        Model0[AttentionMIL Model]
+    end
+
+    subgraph Hospital_1
+        Client1[client.py 1]
+        Loader1[Data Loader: 771 to 768 dim]
+        Model1[AttentionMIL Model]
+    end
+
+    %% Phase 1: Setup & Data Prep
+    HF -->|Downloads Features| DL_Script
+    DL_Script -->|Saves to Disk| LocalDisk
+
+    %% Phase 2: Federated Network
+    LocalDisk -->|Reads Shard 0| Loader0
+    LocalDisk -->|Reads Shard 1| Loader1
+
+    Loader0 --> Model0
+    Loader1 --> Model1
+
+    Server <--> |REC: Global Params| Client0
+    Server <--> |REC: Global Params| Client1
+
+    Client0 -.-> |Send Updated Weights| Server
+    Client1 -.-> |Send Updated Weights| Server
+```
+
+
 ##  How to Run
 
 ### Install Dependencies
