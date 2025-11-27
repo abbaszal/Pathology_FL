@@ -81,8 +81,11 @@ python prepare_segmentation.py
 
 
 
-### 2. Start Federated Clients (Hospitals) for example: 2 hospitals
+### 2. Start Federated Learning for example: 2 hospitals
 ```bash
+# Terminal 1 - Server
+python server.py
+
 # Terminal 2 - Hospital 0
 python client.py 0
 
