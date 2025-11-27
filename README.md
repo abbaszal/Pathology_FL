@@ -34,7 +34,7 @@ This project implements a comprehensive **Federated Learning (FL)** framework fo
 
 ## 🏗 Technical Architecture
 
-### 🔄 System Workflow (Mermaid Diagram)
+### 🔄 System Workflow
 
 ```mermaid
 graph TD
