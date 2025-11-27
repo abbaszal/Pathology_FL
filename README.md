@@ -1,8 +1,4 @@
-Here is the revised README with the corrected diagram part:
-
----
-
-# Federated Learning for Digital Pathology (End-to-End Suite)
+# Federated Learning for Digital Pathology
 
 This project implements a complete Federated Learning (FL) research suite for Computational Pathology, showcasing three distinct pipelines:
 
@@ -10,32 +6,29 @@ This project implements a complete Federated Learning (FL) research suite for Co
 2. **Raw WSI Processing**: End-to-end tiling and feature extraction from gigapixel slides.
 3. **Semantic Segmentation**: Pixel-wise tissue detection using U-Net.
 
-## 🚀 The Three Research Pipelines
+##  The Three Research Pipelines
 
 ### 1️⃣ Pipeline A: Standard Feature-Based FL
 
 * **Goal**: Efficiently classify slides as Tumor/Normal.
 * **Data**: Phikon (ViT) features downloaded from Hugging Face.
-* **Why**: Simulates hospitals with legacy/standardized databases.
 * **Model**: Attention-based Multiple Instance Learning (MIL).
 
 ### 2️⃣ Pipeline B: Raw WSI Research (Heterogeneous)
 
 * **Goal**: Process Raw Gigapixel Slides (.svs) locally before training.
 * **Data**: Raw CMU-1 Slide → Tiling (256x256) → ResNet50 Feature Extraction.
-* **Why**: Simulates a hospital with a local scanner and custom preprocessing pipeline.
-* **Tech**: Automatic tissue detection (HSV thresholding) and batched inference.
 
 ### 3️⃣ Pipeline C: Federated Semantic Segmentation
 
 * **Goal**: Pixel-level identification of tissue vs. background.
 * **Data**: Synthetic masks generated from raw slides using computer vision techniques.
 * **Model**: U-Net (Convolutional Neural Network).
-* **Why**: Demonstrates that the FL system handles dense prediction tasks (images), not just classification (vectors).
 
-## 🛠 System Architecture & Workflow
 
-The following diagram illustrates how raw data flows through the preprocessing scripts and into the Federated Network. It represents the two-phase process: **Data Engineering** and **Federated Execution**.
+##  System Architecture & Workflow
+
+The following diagram illustrates how raw data flows through the preprocessing scripts and into the Federated Learning system. It represents the two-phase process: **Data Engineering** and **FL Execution**.
 
 ```mermaid
 graph TD
@@ -86,9 +79,9 @@ graph TD
 * **PHASE 2: Federated Execution**:
 
   * In this phase, federated learning takes place. Data processed in Phase 1 is sent to different hospital nodes (Research Node, Standard Node, Segmentation Node).
-  * Each node runs its respective client script, and the server aggregates model weights via gRPC communication.
+  * Each node runs its respective client script, and the server aggregates model weights via gRPC.
 
-## 📂 Project Structure
+##  Project Structure
 
 | **File**                  | **Description**                                                                    |
 | ------------------------- | ---------------------------------------------------------------------------------- |
@@ -98,13 +91,13 @@ graph TD
 | `prepare_segmentation.py` | Generates image/mask pairs from raw slides (Pipeline C).                           |
 | **Federated Core**        |                                                                                    |
 | `server.py`               | The FL Server. Orchestrates training rounds and aggregates weights.                |
-| `client.py`               | Standard Client. Simulates a hospital using standard downloaded features (Hosp 1). |
-| `client_wsi.py`           | Research Client. Simulates a hospital processing raw WSI slides locally (Hosp 0).  |
+| `client.py`               | Standard Client. Simulates a hospital using standard downloaded features (e.g., Hosp 1). |
+| `client_wsi.py`           | Research Client. Simulates a hospital processing raw WSI slides locally (e.g., Hosp 0).  |
 | `client_seg.py`           | Segmentation Client. Loads images and trains the U-Net.                            |
 | **Models**                |                                                                                    |
 | `unet.py`                 | The U-Net architecture definition for segmentation.                                |
 
-## 💻 How to Run
+##  How to Run
 
 ### 0. Prerequisites
 
@@ -158,8 +151,6 @@ python client_seg.py 0
 # Terminal 3 (Hospital 1)
 python client_seg.py 1
 ```
-
-## Developed as a comprehensive research portfolio for Computational Pathology.
 
 ---
 
