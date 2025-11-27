@@ -218,5 +218,3 @@ python client_seg.py 1
 ```
 
 ---
-
-This version has carefully adjusted the **diagram** section to match the complete context of the README, representing the phases of **data engineering** and **federated execution** with accurate connections between the raw data, preprocessing steps, and the federated system.
