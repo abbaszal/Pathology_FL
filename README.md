@@ -81,7 +81,7 @@ python prepare_segmentation.py
 
 
 
-### 2. Start Federated Learning for example: 2 hospitals
+### 2. Start Federated Learning for example: 2 hospitals (A)
 ```bash
 # Terminal 1 - Server
 python server.py
@@ -205,7 +205,7 @@ python client_wsi.py 0
 python client.py 1
 ```
 
-### 4. Experiment B: Semantic Segmentation
+### 4. Experiment C: Semantic Segmentation
 
 Simulates hospitals training a U-Net to locate tissue.
 
